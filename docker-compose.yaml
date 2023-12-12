@@ -1,0 +1,38 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    networks:
+      - rabbitmq
+  matrix:
+    build:
+      context: ./eisenhower-matrix
+      dockerfile: Dockerfile
+    restart: always
+    hostname: matrix
+    env_file:
+      - ./eisenhower-matrix/.matrix.env
+    ports:
+      - 5000:5000
+    depends_on:
+      - rabbitmq
+    networks:
+      - rabbitmq
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    restart: on-failure
+    hostname: auth
+    env_file:
+      - ./auth/.auth.env
+    depends_on:
+      - rabbitmq
+    networks:
+      - rabbitmq
+networks:
+  rabbitmq:
+    driver: bridge

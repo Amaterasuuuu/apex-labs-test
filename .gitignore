@@ -1,0 +1,18 @@
+# compiled output
+/eisenhower-matrix/dist
+/eisenhower-matrix/node_modules
+/auth/dist
+/auth/node_modules
+
+# env
+/eisenhower-matrix/.auth.env
+/auth/.matrix.env
+
+# Tests
+/eisenhower-matrix/coverage
+/eisenhower-matrix/.nyc_output
+/coverage
+/.nyc_output
+
+# IDE - VSCode
+.vscode/*
