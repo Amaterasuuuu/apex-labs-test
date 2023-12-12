@@ -7,6 +7,8 @@
 # env
 /eisenhower-matrix/.auth.env
 /auth/.matrix.env
+.auth.env
+.matrix.env
 
 # Tests
 /eisenhower-matrix/coverage
